@@ -88,7 +88,7 @@ class SearchBoxes {
 		}
 
 		$classes = array( 'searchForm', 'hidden-print' );
-		if ( $this->mMobile === 'yes ') {
+		if ( $this->mMobile === 'no ') {
 			$classes[] = 'hidden-xs';
 		}
 		if ( $type === 'mainpage' ) {
