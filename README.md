@@ -17,18 +17,25 @@ Boostrap 3 as well as Skin:Helena (unpublished) along with its global LESS varia
 ## Usage
 This is a tag extension: <searchbox></searchbox>. The following options are available:
 
-* 'type':        'standard' (default) / 'mainpage'
-* 'width':       width in percentage (omit the '%' sign)
-* 'placeholder': a placeholder text for the inputbox
-* 'default':     default text in the input box (will hide the placeholder if specified)
-* 'buttonlabel': text for the search button. 'Search' by default.
-* 'labeltext':   label for the input field. 
-* 'id':          an id attribute for the form. Currently unspecified behavior.
-* 'category':    a category to filter by. Passed to the search form as "incategory:".
-* 'dir':         'rtl' / 'ltr'. Allows to override the form's default direction.
-* 'internal':    'yes' / 'no' (default) - whether to use 'Special:Search' even if Extension:WRGoogleSearch is on.
-* 'mobile':      'yes' (default) / 'no' - whether to show the form in mobile resolutions (basically Bootstrap's
-				 'hidden-xs')
+* 'type':              'standard' (default) / 'mainpage'
+* 'placeholder':       a placeholder text for the inputbox
+* 'default':           default text in the input box (will hide the placeholder if specified)
+* 'buttonlabel':       text for the search button. 'Search' by default.
+* 'labeltext':         label for the input field. 
+* 'id':                an id attribute for the form. Currently unspecified behavior.
+* 'category':          a category to filter by. Passed to the search form as "incategory:".
+* 'dir':               'rtl' / 'ltr'. Allows to override the form's default direction.
+* 'internal':          'yes' / 'no' (default) - whether to use 'Special:Search' even if Extension:WRGoogleSearch is on.
+* 'mobile':            'yes' (default) / 'no' - whether to show the form in mobile resolutions (basically Bootstrap's
+				       'hidden-xs')
+* 'fancybutton':       'yes' / 'no' (default) - whether to use Bootstrap's 'btn-default' class
+* 'elementsize':       'small'/'normal' (default)/'large' - translated into Bootstrap 'input-group-lg/sm'.
+* 'hiddenbuttonlabel': 'yes'/'no' (default). Hide the button label (except from screen readers);
+					   Bootstrap 'sr-only'.
+* 'widthclasses':      Allows the use of any Bootstrap grid options: col-(xs|sm|md|lg)-1..12.
+					   e.g.: 'col-sm-12 col-md-8 col-lg-6'.
+* 'inline':            'yes'/'no' (default) - place the form inline.
+
 				 
 ### Example
 	<searchbox>
