@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dror S."
+		]
+	},
+	"searchboxes-desc": "Allows adding search forms to a page. Loosely based on Extension:InputBox."
+}
