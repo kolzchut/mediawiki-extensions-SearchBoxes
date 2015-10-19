@@ -2,23 +2,27 @@
   margin-top: 20px;
   //font-size: 20px;
 
-  .btn {
-    @media @screen-sm {
-      padding-left: 25px;
-      padding-right: 25px;
-      margin-left: 10px;
-    }
-  }
+	.btn,
+	.input-group-lg > .input-group-btn > .btn {
+		border-radius: 0;
 
-  .btn-text {
-    display: none;
+		@media @screen-sm {
+		  padding-left: 25px;
+		  padding-right: 25px;
+		}
+	}
 
-    @media @screen-sm {
-      display: inline;
-    }
-  }
+	.btn-text {
+	display: none;
 
-  .icon {
-    padding-left: 10px; // Spacing between icon and text
-  }
+		@media @screen-sm {
+		  display: inline;
+		}
+	}
+
+	.icon {
+		@media @screen-sm {
+			padding-left: 10px; // Spacing between icon and text
+		}
+	}
 }
