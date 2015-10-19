@@ -87,14 +87,27 @@ class SearchBoxes {
 		$inputID = 'searchInput' . ( $this->mID ?: rand() );
 
 		$htmlLabel = '';
+		$classes = array();
+
 		if ( isset( $this->mLabelText ) && strlen( trim( $this->mLabelText ) ) ) {
 			$this->mLabelText = $this->mParser->recursiveTagParse( $this->mLabelText );
-			$htmlLabel = Html::openElement( 'label', array( 'for' => $inputID ) );
-			$htmlLabel .= $this->mLabelText;
-			$htmlLabel .= Html::closeElement( 'label' );
+		} else {
+			// No user supplied label, so apply a default but show it only to screen-readers
+			$this->mLabelText = wfMessage( 'search' );
+			$classes          = array( 'sr-only' );
 		}
 
-		$classes = array( 'searchForm', 'hidden-print', 'form-inline' );
+		$htmlLabel = Html::element(
+			'label',
+			array(
+				'for' => $inputID,
+				'class' => implode( ' ', $classes )
+			),
+			$this->mLabelText
+		);
+
+
+		$classes = array( 'searchForm', 'hidden-print' );
 
 		if ( $this->mInline !== 'yes') {
 			$classes[] = 'row';
@@ -191,7 +204,7 @@ class SearchBoxes {
 
 		$htmlOut .= Html::element( 'span',
 			array(
-				'class' => 'icon-search',
+				'class' => 'icon icon-search',
 			)
 		);
 		$htmlOut .= Html::closeElement( 'button' );	// button
