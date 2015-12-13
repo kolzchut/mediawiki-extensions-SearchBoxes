@@ -214,7 +214,7 @@ class SearchBoxes {
 		$htmlOut .= Xml::closeElement( 'form' );
 
 		if ( $type === 'mainpage' ) {
-			$this->mParser->getOutput()->addModules( 'ext.searchboxes.mainpage' );
+			$this->mParser->getOutput()->addModuleStyles( 'ext.searchboxes.mainpage.styles' );
 		}
 
 		// Return HTML

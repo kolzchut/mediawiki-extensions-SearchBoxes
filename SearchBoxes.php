@@ -56,7 +56,7 @@ $wgHooks['SpecialSearchSetupEngine'][] = 'SearchBoxesHooks::onSpecialSearchSetup
 
 
 // Register ResourceLoader modules
-$wgResourceModules['ext.searchboxes.mainpage'] = array(
+$wgResourceModules['ext.searchboxes.mainpage.styles'] = array(
 	'localBasePath' => __DIR__ . '/modules',
 	'remoteExtPath' => 'WikiRights/SearchBoxes/modules',
 	'styles' => 'ext.searchBoxes.mainpage.less',
