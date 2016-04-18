@@ -109,8 +109,8 @@ class SearchBoxes {
 
 		$classes = array( 'searchForm', 'hidden-print' );
 
-		if ( $this->mInline !== 'yes') {
-			$classes[] = 'row';
+		if ( $this->mInline === 'yes') {
+			$classes[] = 'form-inline';
 		}
 
 		if ( $this->mMobile === 'no') {
@@ -171,6 +171,7 @@ class SearchBoxes {
 				'value' => $this->mDefaultText,
 				'class' => implode( ' ', $classes ),
 				'placeholder' => $this->mPlaceholderText,
+				'required' => 'required'
 			)
 		);
 
