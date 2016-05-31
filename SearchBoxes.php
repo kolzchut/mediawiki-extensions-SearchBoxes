@@ -37,7 +37,8 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SearchBoxes',
 	'author' => array( 'Dror S. [FFS] ([http://www.kolzchut.org.il Kol-Zchut])' ),
-	//'url'            => '',
+	'url'            => 'https://github.com/kolzchut/mediawiki-extensions-SearchBoxes',
+	'license-name'    => 'GPL-2.0+',
 	'descriptionmsg' => 'searchboxes-desc',
 	'version'        => '0.2.0',
 );
