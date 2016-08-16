@@ -205,7 +205,7 @@ class SearchBoxes {
 
 		$htmlOut .= Html::element( 'span',
 			array(
-				'class' => 'icon icon-search',
+				'class' => 'fa fa-search',
 			)
 		);
 		$htmlOut .= Html::closeElement( 'button' );	// button
