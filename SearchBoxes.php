@@ -33,15 +33,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /* Configuration */
 
 // Credits
-$wgExtensionCredits['parserhook'][] = array(
+$wgExtensionCredits['parserhook'][] = [
 	'path'           => __FILE__,
 	'name'           => 'SearchBoxes',
-	'author' => array( 'Dror S. [FFS] ([http://www.kolzchut.org.il Kol-Zchut])' ),
+	'author' => [ 'Dror S. [FFS] ([http://www.kolzchut.org.il Kol-Zchut])' ],
 	'url'            => 'https://github.com/kolzchut/mediawiki-extensions-SearchBoxes',
 	'license-name'    => 'GPL-2.0+',
 	'descriptionmsg' => 'searchboxes-desc',
-	'version'        => '0.2.0',
-);
+	'version'        => '0.2.0'
+];
 
 // Internationalization
 $wgMessagesDirs['SearchBoxes'] = __DIR__ . '/i18n';
@@ -50,17 +50,15 @@ $wgMessagesDirs['SearchBoxes'] = __DIR__ . '/i18n';
 $wgAutoloadClasses['SearchBoxesHooks'] = __DIR__ . '/SearchBoxes.hooks.php';
 $wgAutoloadClasses['SearchBoxes'] = __DIR__ . '/SearchBoxes.classes.php';
 
-
 // Register parser hook
 $wgHooks['ParserFirstCallInit'][] = 'SearchBoxesHooks::onParserFirstCallInit';
 $wgHooks['SpecialSearchSetupEngine'][] = 'SearchBoxesHooks::onSpecialSearchSetupEngine';
 
-
 // Register ResourceLoader modules
-$wgResourceModules['ext.searchboxes.mainpage.styles'] = array(
+$wgResourceModules['ext.searchboxes.mainpage.styles'] = [
 	'localBasePath' => __DIR__ . '/modules',
 	'remoteExtPath' => 'WikiRights/SearchBoxes/modules',
 	'styles' => 'ext.searchBoxes.mainpage.less',
 	'position' => 'top',
-);
+];
 

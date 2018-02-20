@@ -10,7 +10,7 @@ class SearchBoxesHooks {
 
 	public static function onParserFirstCallInit( Parser &$parser ) {
 		// Register the hook with the parser
-		$parser->setHook( 'searchbox', array( 'SearchBoxesHooks', 'render' ) );
+		$parser->setHook( 'searchbox', [ 'SearchBoxesHooks', 'render' ] );
 
 		// Continue
 		return true;

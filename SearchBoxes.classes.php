@@ -11,7 +11,7 @@ class SearchBoxes {
 
 	/* Fields */
 
-	private $validElementSizes = array( 'small', 'normal', 'large');
+	private $validElementSizes = [ 'small', 'normal', 'large' ];
 	private $validExtraClassesRegEx = '/^col-(?:xs|sm|md|lg)-(?:10|11|12|[1-9])$/';
 
 
@@ -79,41 +79,41 @@ class SearchBoxes {
 
 		if ( $this->mID !== '' ) {
 			$this->mID = Sanitizer::escapeId( $this->mID );
-			$idArray = array( 'id' => $this->mID );
+			$idArray = [ 'id' => $this->mID ];
 		} else {
-			$idArray = array();
+			$idArray = [];
 		}
 
 		$inputID = 'searchInput' . ( $this->mID ?: rand() );
 
 		$htmlLabel = '';
-		$classes = array();
+		$classes = [];
 
 		if ( isset( $this->mLabelText ) && strlen( trim( $this->mLabelText ) ) ) {
 			$this->mLabelText = $this->mParser->recursiveTagParse( $this->mLabelText );
 		} else {
 			// No user supplied label, so apply a default but show it only to screen-readers
 			$this->mLabelText = wfMessage( 'search' );
-			$classes          = array( 'sr-only' );
+			$classes          = [ 'sr-only' ];
 		}
 
 		$htmlLabel = Html::element(
 			'label',
-			array(
+			[
 				'for' => $inputID,
 				'class' => implode( ' ', $classes )
-			),
+			],
 			$this->mLabelText
 		);
 
 
-		$classes = array( 'searchForm', 'hidden-print' );
+		$classes = [ 'searchForm', 'hidden-print' ];
 
-		if ( $this->mInline === 'yes') {
+		if ( $this->mInline === 'yes' ) {
 			$classes[] = 'form-inline';
 		}
 
-		if ( $this->mMobile === 'no') {
+		if ( $this->mMobile === 'no' ) {
 			$classes[] = 'hidden-xs';
 		}
 		if ( $type === 'mainpage' ) {
@@ -121,24 +121,24 @@ class SearchBoxes {
 		}
 
 		$htmlOut = Html::openElement( 'form',
-			array(
+			[
 				'name' => 'searchForm' . $this->mID,
 				'class' => implode( ' ', $classes ),
 				'action' => SpecialPage::getTitleFor( 'Search' )->getLocalURL(),
-			) + $idArray
+			] + $idArray
 		);
 
 		if ( $this->mCategory != '' ) {
-			$htmlOut .= Xml::element( 'input',
-				array(
+			$htmlOut .= Html::element( 'input',
+				[
 					'name' => 'category',
 					'type' => 'hidden',
-					'value' => $this->mCategory,
-				)
+					'value' => $this->mCategory
+				]
 			);
 		}
 
-		$classes = array( 'input-group' );
+		$classes = [ 'input-group' ];
 		if ( $type === 'mainpage' || $this->mElementSize === 'large' ) {
 			$classes[] = 'input-group-lg';
 		} elseif ( $this->mElementSize === 'small' ) {
@@ -149,13 +149,13 @@ class SearchBoxes {
 		};
 
 		$htmlOut .= Html::openElement( 'div',
-			array(
-				'class' => implode( ' ', $classes ),
-			)
+			[
+				'class' => implode( ' ', $classes )
+			]
 		);
 		$htmlOut .= $htmlLabel;
 
-		$classes = array( 'form-control', 'mw-searchInput' );
+		$classes = [ 'form-control', 'mw-searchInput' ];
 
 		if ( $this->mInternal === 'yes' ) {
 			$classes[] = 'internalSearch';
@@ -163,7 +163,7 @@ class SearchBoxes {
 
 		$htmlOut .= Html::element(
 			'input',
-			array(
+			[
 				'id' => $inputID,
 				'type' => 'text',
 				'name' => 'search',
@@ -172,47 +172,53 @@ class SearchBoxes {
 				'class' => implode( ' ', $classes ),
 				'placeholder' => $this->mPlaceholderText,
 				'required' => 'required'
-			)
+			]
 		);
 
 		$htmlOut .= Html::openElement( 'span',
-			array(
-				'class' => 'input-group-btn',
-			)
+			[
+				'class' => 'input-group-btn'
+			]
 		);
 
-		$classes = array( 'btn', 'searchBtn' );
+		$classes = [ 'btn', 'searchBtn' ];
 
 		if ( $this->mFancyButton === 'yes' || $type === 'mainpage' ) {
 			$classes[] = 'btn-default';
 		};
 
 		$htmlOut .= Html::openElement( 'button',
-			array(
+			[
 				'type' => 'submit',
 				'name' => 'go',
 				'title' => $this->mButtonLabel,
 				'class' => implode( ' ', $classes )
-			)
+			]
 		);
 		$htmlOut .= Html::openElement( 'span',
-		    array(
+			[
+				'class' => 'btn-inner-wrapper'
+			]
+		);
+		$htmlOut .= Html::openElement( 'span',
+		    [
 		        'class' => 'btn-text' . ( $this->mHiddenButtonLabel === 'yes' ? ' sr-only' : '' ),
-		    )
+		    ]
 		);
 		$htmlOut .= $this->mButtonLabel . '&nbsp;';
 		$htmlOut .= Html::closeElement( 'span' ); // button text
 
 		$htmlOut .= Html::element( 'span',
-			array(
-				'class' => 'fa fa-search',
-			)
+			[
+				'class' => 'fa fa-search btn-icon'
+			]
 		);
+		$htmlOut .= Html::closeElement( 'span' ); // .btn-inner-wrapper
 		$htmlOut .= Html::closeElement( 'button' );	// button
-		$htmlOut .= Xml::closeElement( 'span' ); // input-group-btn
+		$htmlOut .= Html::closeElement( 'span' ); // input-group-btn
 
-		$htmlOut .= Xml::closeElement( 'div' );
-		$htmlOut .= Xml::closeElement( 'form' );
+		$htmlOut .= Html::closeElement( 'div' );
+		$htmlOut .= Html::closeElement( 'form' );
 
 		if ( $type === 'mainpage' ) {
 			$this->mParser->getOutput()->addModuleStyles( 'ext.searchboxes.mainpage.styles' );
@@ -230,21 +236,22 @@ class SearchBoxes {
 	 */
 	public function extractOptions( $text ) {
 		// Parse all possible options
-		$values = array();
+		$values = [];
 		foreach ( explode( "\n", $text ) as $line ) {
-			if ( strpos( $line, '=' ) === false )
+			if ( strpos( $line, '=' ) === false ) {
 				continue;
+			}
 			list( $name, $value ) = explode( '=', $line, 2 );
 			$values[ strtolower( trim( $name ) ) ] = Sanitizer::decodeCharReferences( trim( $value ) );
 		}
 
 		// Validate the dir value.
-		if ( isset( $values['dir'] ) && !in_array( $values['dir'], array( 'ltr', 'rtl' ) ) ) {
+		if ( isset( $values['dir'] ) && !in_array( $values['dir'], [ 'ltr', 'rtl' ] ) ) {
 			unset( $values['dir'] );
 		}
 
 		// Build list of options, with local member names
-		$options = array(
+		$options = [
 			'type' => 'mType',
 			'default' => 'mDefaultText',
 			'placeholder' => 'mPlaceholderText',
@@ -259,7 +266,7 @@ class SearchBoxes {
 			'elementsize' => 'mElementSize',
 			'hiddenbuttonlabel' => 'mHiddenButtonLabel',
 			'widthclasses' => 'mWidthClasses'
-		);
+		];
 		foreach ( $options as $name => $var ) {
 			if ( isset( $values[$name] ) ) {
 				$this->$var = $values[$name];
@@ -268,7 +275,7 @@ class SearchBoxes {
 
 		// Validate css classes
 		$classes = explode( ' ', $this->mWidthClasses );
-		$this->mWidthClasses = array();
+		$this->mWidthClasses = [];
 		foreach ( $classes as $class ) {
 			$valid = preg_match( $this->validExtraClassesRegEx, $class );
 			if ( $valid === 1 ) {
