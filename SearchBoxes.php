@@ -40,7 +40,7 @@ $wgExtensionCredits['parserhook'][] = [
 	'url'            => 'https://github.com/kolzchut/mediawiki-extensions-SearchBoxes',
 	'license-name'    => 'GPL-2.0+',
 	'descriptionmsg' => 'searchboxes-desc',
-	'version'        => '0.2.0'
+	'version'        => '0.3.0'
 ];
 
 // Internationalization
@@ -60,5 +60,6 @@ $wgResourceModules['ext.searchboxes.mainpage.styles'] = [
 	'remoteExtPath' => 'WikiRights/SearchBoxes/modules',
 	'styles' => 'ext.searchBoxes.mainpage.less',
 	'position' => 'top',
+	'class' => 'HelenaResourceLoaderModule'
 ];
 
