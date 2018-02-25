@@ -1,9 +1,13 @@
 .mainPageSearchForm {
-	margin-top: 20px;
-	//font-size: 20px;
+	margin: 20px auto auto;
+
+	@media @screen-sm {
+		max-width: 70%;
+	}
 
 	.form-control:focus {
 		box-shadow: none;
+		border-right: none;
 
 		& + .input-group-btn > .btn {
 			border: 1px solid #66afe9;
