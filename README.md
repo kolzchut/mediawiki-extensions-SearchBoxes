@@ -6,7 +6,7 @@ Loosely based on [Extension:InputBox][inputboxurl] by Erik Möller.
 
 This MediaWiki extension supplies two types of Bootstrap3-themed search forms:
 * 'standard' - a simple inline search form
-* 'mainpage' - simply an enlarged version of 'standard'
+* 'white' - a different design with a white background
 
 
 ## Caveats
@@ -17,7 +17,7 @@ Boostrap 3 as well as Skin:Helena (unpublished) along with its global LESS varia
 ## Usage
 This is a tag extension: <searchbox></searchbox>. The following options are available:
 
-* 'type':              'standard' (default) / 'mainpage'
+* 'type':              'standard' (default) / 'white'
 * 'placeholder':       a placeholder text for the inputbox
 * 'default':           default text in the input box (will hide the placeholder if specified)
 * 'buttonlabel':       text for the search button. 'Search' by default.

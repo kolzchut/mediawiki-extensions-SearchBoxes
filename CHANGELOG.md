@@ -4,6 +4,10 @@ Revision history for Extension:SearchBoxes
 All notable changes to this project will be documented in this file.
 This project adheres (or attempts to adhere) to [Semantic Versioning](http://semver.org/).
 
+## [0.4.0] - 2018-02-26
+- Allow to (sort-of) use the getSearchForm() function directly, without using a parser hook.
+  This allow it to be used for skin:Helena's navbar search.
+
 ## [0.3.0] - 2018-02-20
 - Change style to fit new homepage design
 

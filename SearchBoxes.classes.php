@@ -25,7 +25,6 @@ class SearchBoxes {
 	private $mLabelText = '';
 	private $mID = '';
 	private $mCategory = '';
-	private $mDir = '';
 	private $mInternal = 'no';
 	private $mMobile = 'yes';
 	private $mFancyButton = 'no';
@@ -35,20 +34,20 @@ class SearchBoxes {
 
 	/* Functions */
 
-	public function __construct( Parser $parser ) {
-		$this->mParser = $parser;
-		// Default value for dir taken from the page language (bug 37018)
-		$this->mDir = $this->mParser->getTargetLanguage()->getDir();
-		// Split caches by language, to make sure visitors do not see a cached
-		// version in a random language (since labels are in the user language)
-		$this->mParser->getOptions()->getUserLangObj();
+	/**
+	 * SearchBoxes constructor.
+	 *
+	 * @param Parser|null $parser
+	 */
+	public function __construct( $parser = null ) {
+		$this->mParser = is_null( $parser ) ? $GLOBALS['wgParser'] : $parser;
 	}
 
 	public function render() {
 		// Handle various types
 		switch ( $this->mType ) {
-			case 'mainpage':
-				return $this->getSearchForm( 'mainpage' );
+			case 'white':
+				return $this->getSearchForm( 'white' );
 			case 'search':
 			default:
 				return $this->getSearchForm();
@@ -58,20 +57,17 @@ class SearchBoxes {
 
 
 	/**
-	 * Search form for our main page, bootstrap-themed
-	 */
-	public function getMainPageSearchForm() {
-		return $this->getSearchForm( 'mainpage' );
-	}
-
-	/**
 	 * Generate search form
 	 *
 	 * @param string $type
 	 * @return string HTML
 	 *
 	 */
-	public function getSearchForm( $type = 'standard' ) {
+	public function getSearchForm( $type = 'standard', $options = null ) {
+		if ( is_array( $options ) ) {
+			$this->validateOptions( $options );
+		}
+
 		// Use button label fallbacks
 		if ( !$this->mButtonLabel ) {
 			$this->mButtonLabel = wfMessage( 'search' )->text();
@@ -116,8 +112,8 @@ class SearchBoxes {
 		if ( $this->mMobile === 'no' ) {
 			$classes[] = 'hidden-xs';
 		}
-		if ( $type === 'mainpage' ) {
-			$classes[] = 'mainPageSearchForm';
+		if ( $type === 'white' ) {
+			$classes[] = 'searchForm-white';
 		}
 
 		$htmlOut = Html::openElement( 'form',
@@ -139,7 +135,7 @@ class SearchBoxes {
 		}
 
 		$classes = [ 'input-group' ];
-		if ( $type === 'mainpage' || $this->mElementSize === 'large' ) {
+		if ( $this->mElementSize === 'large' ) {
 			$classes[] = 'input-group-lg';
 		} elseif ( $this->mElementSize === 'small' ) {
 			$classes[] = 'input-group-sm';
@@ -183,7 +179,7 @@ class SearchBoxes {
 
 		$classes = [ 'btn', 'searchBtn' ];
 
-		if ( $this->mFancyButton === 'yes' || $type === 'mainpage' ) {
+		if ( $this->mFancyButton === 'yes' ) {
 			$classes[] = 'btn-default';
 		};
 
@@ -220,8 +216,8 @@ class SearchBoxes {
 		$htmlOut .= Html::closeElement( 'div' );
 		$htmlOut .= Html::closeElement( 'form' );
 
-		if ( $type === 'mainpage' ) {
-			$this->mParser->getOutput()->addModuleStyles( 'ext.searchboxes.mainpage.styles' );
+		if ( $type === 'white' && !is_null( $this->mParser->getOutput() ) ) {
+			$this->mParser->getOutput()->addModuleStyles( 'ext.searchboxes.white.styles' );
 		}
 
 		// Return HTML
@@ -245,6 +241,10 @@ class SearchBoxes {
 			$values[ strtolower( trim( $name ) ) ] = Sanitizer::decodeCharReferences( trim( $value ) );
 		}
 
+		$this->validateOptions( $values );
+	}
+
+	function validateOptions( array $values ) {
 		// Validate the dir value.
 		if ( isset( $values['dir'] ) && !in_array( $values['dir'], [ 'ltr', 'rtl' ] ) ) {
 			unset( $values['dir'] );
@@ -260,7 +260,6 @@ class SearchBoxes {
 			'labeltext' => 'mLabelText',
 			'id' => 'mID',
 			'category' => 'mCategory',
-			'dir' => 'mDir',
 			'internal' => 'mInternal',
 			'mobile' => 'mMobile',
 			'elementsize' => 'mElementSize',
