@@ -163,7 +163,6 @@ class SearchBoxes {
 				'id' => $inputID,
 				'type' => 'text',
 				'name' => 'search',
-				'dir' => $this->mDir,
 				'value' => $this->mDefaultText,
 				'class' => implode( ' ', $classes ),
 				'placeholder' => $this->mPlaceholderText,
