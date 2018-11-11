@@ -27,6 +27,7 @@ class SearchBoxes {
 	private $mCategory = '';
 	private $mInternal = 'no';
 	private $mMobile = 'yes';
+	private $mInputLength = 0;
 	private $mFancyButton = 'no';
 	private $mElementSize = '';
 	private $mWidthClasses = '';
@@ -166,7 +167,8 @@ class SearchBoxes {
 				'value' => $this->mDefaultText,
 				'class' => implode( ' ', $classes ),
 				'placeholder' => $this->mPlaceholderText,
-				'required' => 'required'
+				'required' => 'required',
+				'size' => $this->mInputLength
 			]
 		);
 
@@ -263,7 +265,8 @@ class SearchBoxes {
 			'mobile' => 'mMobile',
 			'elementsize' => 'mElementSize',
 			'hiddenbuttonlabel' => 'mHiddenButtonLabel',
-			'widthclasses' => 'mWidthClasses'
+			'widthclasses' => 'mWidthClasses',
+			'inputlength' => 'mInputLength'
 		];
 		foreach ( $options as $name => $var ) {
 			if ( isset( $values[$name] ) ) {

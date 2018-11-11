@@ -35,6 +35,7 @@ This is a tag extension: <searchbox></searchbox>. The following options are avai
 * 'widthclasses':      Allows the use of any Bootstrap grid options: col-(xs|sm|md|lg)-1..12.
 					   e.g.: 'col-sm-12 col-md-8 col-lg-6'.
 * 'inline':            'yes'/'no' (default) - place the form inline.
+* 'inputlength':       this is equivalant to the HTML "size" attribute. The default of 0 means "ignored".
 
 				 
 ### Example
