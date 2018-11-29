@@ -178,7 +178,7 @@ class SearchBoxes {
 			]
 		);
 
-		$classes = [ 'btn', 'searchBtn' ];
+		$classes = [ 'btn', 'searchBtn', 'form-control' ];
 
 		if ( $this->mFancyButton === 'yes' ) {
 			$classes[] = 'btn-default';
