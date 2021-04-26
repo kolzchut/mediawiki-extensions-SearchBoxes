@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * Classes for SearchBoxes extension
  *
@@ -41,7 +44,7 @@ class SearchBoxes {
 	 * @param Parser|null $parser
 	 */
 	public function __construct( $parser = null ) {
-		$this->mParser = is_null( $parser ) ? $GLOBALS['wgParser'] : $parser;
+		$this->mParser = is_null( $parser ) ? MediaWikiServices::getInstance()->getParser() : $parser;
 	}
 
 	public function render() {
@@ -75,7 +78,7 @@ class SearchBoxes {
 		}
 
 		if ( $this->mID !== '' ) {
-			$this->mID = Sanitizer::escapeId( $this->mID );
+			$this->mID = Sanitizer::escapeIdForAttribute( $this->mID );
 			$idArray = [ 'id' => $this->mID ];
 		} else {
 			$idArray = [];
@@ -83,7 +86,6 @@ class SearchBoxes {
 
 		$inputID = 'searchInput' . ( $this->mID ?: rand() );
 
-		$htmlLabel = '';
 		$classes = [];
 
 		if ( isset( $this->mLabelText ) && strlen( trim( $this->mLabelText ) ) ) {

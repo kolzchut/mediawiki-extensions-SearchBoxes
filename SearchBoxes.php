@@ -59,7 +59,6 @@ $wgResourceModules['ext.searchboxes.white.styles'] = [
 	'localBasePath' => __DIR__ . '/modules',
 	'remoteExtPath' => 'WikiRights/SearchBoxes/modules',
 	'styles' => 'ext.searchBoxes.white.less',
-	'position' => 'top',
 	'class' => 'HelenaResourceLoaderModule'
 ];
 
