@@ -220,7 +220,7 @@ class SearchBoxes {
 		$htmlOut .= Html::closeElement( 'form' );
 
 		if ( $type === 'white' && !is_null( $this->mParser->getOutput() ) ) {
-			$this->mParser->getOutput()->addModuleStyles( 'ext.searchboxes.white.styles' );
+			$this->mParser->getOutput()->addModuleStyles( [ 'ext.searchboxes.white.styles' ] );
 		}
 
 		// Return HTML
