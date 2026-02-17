@@ -1,8 +1,12 @@
 Extension:SearchBoxes for MediaWiki
 ===================================
 
-Copyright (C) Dror S. & [Kol-Zchut Ltd](http://www.kolzchut.org.il).
+Copyright (C) Dror S. & [Kol-Zchut Ltd](https://www.kolzchut.org.il).
 Loosely based on [Extension:InputBox][inputboxurl] by Erik Möller.
+
+## :no_entry: ARCHIVED
+Hasn't been in use since MediaWiki 1.35, and no longer in use by Kol-Zchut.
+
 
 This MediaWiki extension supplies two types of Bootstrap3-themed search forms:
 * 'standard' - a simple inline search form
@@ -15,7 +19,7 @@ Boostrap 3 as well as Skin:Helena (unpublished) along with its global LESS varia
 
 
 ## Usage
-This is a tag extension: <searchbox></searchbox>. The following options are available:
+This is a tag extension: `<searchbox></searchbox>`. The following options are available:
 
 * 'type':              'standard' (default) / 'white'
 * 'placeholder':       a placeholder text for the inputbox
