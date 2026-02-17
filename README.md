@@ -1,7 +1,7 @@
 Extension:SearchBoxes for MediaWiki
 ===================================
 
-Copyright (C) Dror S. & [Kol-Zchut Ltd](http://www.kolzchut.org.il).
+Copyright (C) Dror S. & [Kol-Zchut Ltd](https://www.kolzchut.org.il).
 Loosely based on [Extension:InputBox][inputboxurl] by Erik Möller.
 
 This MediaWiki extension supplies two types of Bootstrap3-themed search forms:
